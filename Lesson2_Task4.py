@@ -7,4 +7,4 @@ i = 0
 while i < len(my_list):
     print(f"{i + 1}. {my_list[i][:10]}")
     i += 1
-    print(my_list2[i])
+    print(my_list[i])
