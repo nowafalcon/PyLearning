@@ -4,13 +4,13 @@
 
 from sys import argv
 
-print(argv)
-try:
-    name, time, salary, bonus = argv
-    time = int(time)
-    salary = int(salary)
-    bonus = int(bonus)
-    res = time * salary + bonus
-    print(f'заработная плата сотрудника  {res}')
-except ValueError:
-    print('Not a number')
+
+def salary():
+    try:
+        time, cost, bonus = map(float, argv[1:])
+        print(f'заработная плата сотрудника  {time * cost + bonus}')
+    except ValueError:
+        print('Not a number')
+
+
+salary()
