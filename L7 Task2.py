@@ -27,16 +27,16 @@ class Tkan:
 class Coat(Tkan):
     def __init__(self, width, height):
         super().__init__(width, height)
-        self.square_c = round(self.width / 6.5 + 0.5)
+        self.square_c = self.width / 6.5 + 0.5
 
     def __str__(self):
-        return f'Площадь на пальто: {round(self.square_c,2)}'
+        return f'Площадь на пальто: {self.square_c}'
 
 
 class Jacket(Tkan):
     def __init__(self, width, height):
         super().__init__(width, height)
-        self.square_j = round(self.height * 2 + 0.3)
+        self.square_j = self.height * 2 + 0.3
 
     def __str__(self):
         return f'Площадь на костюм: {self.square_j}'
@@ -44,9 +44,8 @@ class Jacket(Tkan):
 
 coat = Coat(8, 10)
 jacket = Jacket(4, 6)
+tkan = Tkan(coat.width, jacket.height)
 print(coat)
 print(jacket)
-print(coat.get_sq_full)
-print(jacket.get_sq_full)
-print(jacket.get_square_c())
-print(jacket.get_square_j())
+print(tkan.get_sq_full)
+
