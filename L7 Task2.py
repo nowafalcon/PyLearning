@@ -6,46 +6,48 @@
 # костюма (2 * H + 0.3). Проверить работу этих методов на реальных данных.
 # Реализовать общий подсчет расхода ткани. Проверить на практике полученные на этом уроке знания: реализовать
 # абстрактные классы для основных классов проекта, проверить на практике работу декоратора @property.
+class Odezhda:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
 
-class Tkan:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+    def total(self):
+        return self.a.square() + self.b.square()
 
-    def get_square_c(self):
-        return self.width / 6.5 + 0.5
+    def __str__(self):
+        return f'Площадь ткани общая:\n{round(self.total(), 2)}'
 
-    def get_square_j(self):
-        return self.height * 2 + 0.3
 
+class Jacket:
+    def __init__(self, a):
+        self.a = a
+
+    def square(self):
+        return self.a / 6.5 + 0.5
+
+    def __str__(self):
+        return f'Площадь на пальто:\n{round(self.square(),2)}'
+
+
+class Coat:
+    def __init__(self, a):
+        self.a = a
+
+    def square(self):
+        return self.value * 2 + 0.3
+
+    # Просто воткнул property, чтоб было
     @property
-    def get_sq_full(self):
-        return str(f'Площадь общая ткани\n'
-                   f'{(self.width / 6.5 + 0.5) + (self.height * 2 + 0.3)}')
-
-
-class Coat(Tkan):
-    def __init__(self, width, height):
-        super().__init__(width, height)
-        self.square_c = self.width / 6.5 + 0.5
+    def value(self):
+        return self.a
 
     def __str__(self):
-        return f'Площадь на пальто: {self.square_c}'
+        return f'Площадь на пальто:\n{round(self.square(),2)}'
 
 
-class Jacket(Tkan):
-    def __init__(self, width, height):
-        super().__init__(width, height)
-        self.square_j = self.height * 2 + 0.3
-
-    def __str__(self):
-        return f'Площадь на костюм: {self.square_j}'
-
-
-coat = Coat(8, 10)
-jacket = Jacket(4, 6)
-tkan = Tkan(coat.width, jacket.height)
+coat = Coat(8)
+jacket = Jacket(4)
+total = Odezhda(jacket, coat)
 print(coat)
 print(jacket)
-print(tkan.get_sq_full)
-
+print(total)
